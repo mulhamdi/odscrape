@@ -1,10 +1,12 @@
 {
   "name": "odscrape",
   "version": "1.0.0",
+  "type": "module",
   "description": "Web untuk menampilkan link download dan stream anime yang diambil dari situs Otakudesu.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main.js",
+    "dev": "nodemon main.js"
   },
   "keywords": [
     "Scrape",
@@ -15,6 +17,11 @@
   "devDependencies": {
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
-    "globals": "^15.6.0"
+    "globals": "^15.6.0",
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0-rc.12"
   }
 }
