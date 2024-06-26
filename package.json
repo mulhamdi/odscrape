@@ -1,0 +1,15 @@
+{
+  "name": "odscrape",
+  "version": "1.0.0",
+  "description": "Web untuk menampilkan link download dan stream anime yang diambil dari situs Otakudesu.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Scrape",
+    "Scraping"
+  ],
+  "author": "Mimu",
+  "license": "GPL-3.0"
+}
