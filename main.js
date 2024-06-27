@@ -65,10 +65,7 @@ async function getAnimeData() {
     const mainPage = await getHTMLSource(TARGET_URL);
     const $mainPage = cheerio.load(mainPage);
     const firstAnimesContainer = $mainPage('.venz').first().find('li');
-    let i = 0;
     for (const card of firstAnimesContainer) {
-      if (i === 2) break;
-      i++;
       const animeInfo = {
         title: $mainPage(card).find('h2.jdlflm').text().trim(),
         thumbnail: $mainPage(card).find('img').attr('src'),
