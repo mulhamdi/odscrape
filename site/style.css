@@ -1,0 +1,97 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: sans-serif, monospace;
+}
+
+body {
+  background-color: #0c0c0c;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #2a2a2a;
+  color: beige;
+}
+header h1 {
+  font-size: 1.2rem;
+}
+header #logo {
+  font-weight: 500;
+  color: #00adff;
+}
+footer {
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: beige;
+  background-color: #2a2a2a;
+}
+
+#anime-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 1rem;
+  gap: 1rem;
+  color: beige;
+  background-color: #1b1b1b;
+}
+
+video {
+  display: block;
+}
+
+#anime-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#anime-card-container .anime-card {
+  display: flex;
+  width: 106px;
+  max-width: 100%;
+  height: 150px;
+}
+.anime-card h2 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.anime-card .thumbnail {
+  cursor: pointer;
+}
+
+/* Media queries */
+@media only screen and (max-width: 400px) {
+  #anime-card-container {
+    justify-content: space-evenly;
+  }
+}
+@media only screen and (min-width: 400px) {
+  #anime-container {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  #anime-container {
+    margin: 1rem auto;
+    width: 66%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  #anime-container {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  #anime-container {
+    width: 50%;
+  }
+}
