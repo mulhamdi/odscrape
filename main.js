@@ -1,8 +1,10 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import { writeFileSync } from 'fs';
 
 // Global variables
 const TARGET_URL = 'https://otakudesu.cloud';
+const JSON_PATH = './anime-list.json';
 const animesData = [];
 const axiosParams = {
   headers: {
@@ -83,4 +85,13 @@ async function getAnimeData() {
   }
 }
 
-getAnimeData().then(() => console.log(animesData));
+// Entry point
+getAnimeData().then(() => {
+  try {
+    const serializedAnimesData = JSON.stringify(animesData, null, ' ');
+    writeFileSync(JSON_PATH, serializedAnimesData, 'utf-8');
+    console.log('Animes data successfully saved to disk.');
+  } catch (error) {
+    console.error(error.message);
+  }
+});
