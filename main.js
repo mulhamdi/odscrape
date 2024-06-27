@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 
 // Global variables
 const TARGET_URL = 'https://otakudesu.cloud';
-
+const animesData = [];
 const axiosParams = {
   headers: {
     'User-Agent':
@@ -55,7 +55,6 @@ async function getStreamURL(animePageURL) {
     .attr('href');
   pdrainID = await getRedirectedURL(pdrainID);
 
-  // return pdrainID.replace('https://pixeldrain.com/u/', '');
   return pdrainID.substring(25);
 }
 
@@ -66,9 +65,8 @@ async function getAnimeData() {
     const firstAnimesContainer = $mainPage('.venz').first().find('li');
     let i = 0;
     for (const card of firstAnimesContainer) {
-      if (i === 3) break;
+      if (i === 2) break;
       i++;
-      console.log(`\n${i}.\n----`);
       const animeInfo = {
         title: $mainPage(card).find('h2.jdlflm').text().trim(),
         thumbnail: $mainPage(card).find('img').attr('src'),
@@ -77,13 +75,12 @@ async function getAnimeData() {
         releaseDate: $mainPage(card).find('div.newnime').text(),
         pdrainID: await getStreamURL($mainPage(card).find('a').attr('href')),
       };
-      for (const data in animeInfo) {
-        console.log(animeInfo[data]);
-      }
+
+      animesData.push(animeInfo);
     }
   } catch (error) {
     console.log(error.message);
   }
 }
 
-getAnimeData();
+getAnimeData().then(() => console.log(animesData));
