@@ -48,14 +48,15 @@ async function getStreamURL(animePageURL) {
 
   const streamPage = await getHTMLSource(latestEpsURL);
   const $streamPage = cheerio.load(streamPage);
-  let pixelDrainLink = $streamPage('div.download')
-    .find('strong:contains("MKV 1080p")')
+  let pdrainID = $streamPage('div.download')
+    .find('strong:contains("Mp4 720p")')
     .next()
     .next()
     .attr('href');
-  pixelDrainLink = await getRedirectedURL(pixelDrainLink);
+  pdrainID = await getRedirectedURL(pdrainID);
 
-  return pixelDrainLink;
+  // return pdrainID.replace('https://pixeldrain.com/u/', '');
+  return pdrainID.substring(25);
 }
 
 async function getAnimeData() {
@@ -65,7 +66,7 @@ async function getAnimeData() {
     const firstAnimesContainer = $mainPage('.venz').first().find('li');
     let i = 0;
     for (const card of firstAnimesContainer) {
-      if (i === 1) break;
+      if (i === 3) break;
       i++;
       console.log(`\n${i}.\n----`);
       const animeInfo = {
@@ -74,7 +75,7 @@ async function getAnimeData() {
         episode: $mainPage(card).find('div.epz').text().trim(),
         releaseDay: $mainPage(card).find('div.epztipe').text().trim(),
         releaseDate: $mainPage(card).find('div.newnime').text(),
-        streamURL: await getStreamURL($mainPage(card).find('a').attr('href')),
+        pdrainID: await getStreamURL($mainPage(card).find('a').attr('href')),
       };
       for (const data in animeInfo) {
         console.log(animeInfo[data]);
