@@ -44,18 +44,18 @@ async function getStreamURL(animePageURL) {
   const animePage = await getHTMLSource(animePageURL);
   const $animePage = cheerio.load(animePage);
   const latestEpsURL = $animePage('div.episodelist')
+    .eq(1)
     .find('a')
     .first()
     .attr('href');
 
   const streamPage = await getHTMLSource(latestEpsURL);
-  const $streamPage = cheerio.load(streamPage);
-  let pdrainID = $streamPage('div.download')
+  const $ = cheerio.load(streamPage);
+  const pdrainLink = $('div.download')
     .find('strong:contains("Mp4 720p")')
-    .next()
-    .next()
+    .siblings('a:contains("Pdrain")')
     .attr('href');
-  pdrainID = await getRedirectedURL(pdrainID);
+  const pdrainID = await getRedirectedURL(pdrainLink);
 
   return pdrainID.substring(25);
 }
