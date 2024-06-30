@@ -39,10 +39,28 @@ async function getHTMLSource(URL) {
   }
 }
 
-async function getRedirectedURL(URL) {
-  return await axios
-    .get(URL)
-    .then((response) => response.request.res.responseUrl);
+async function getRedirectedURL(requestedUrl) {
+  try {
+    await axios.get(requestedUrl, { ...axiosParams, maxRedirects: 0 });
+    // Valid but not redirected
+    return requestedUrl;
+  } catch (error) {
+    // Redirected (server: CORS issue)
+    if (error.request._isRedirect) {
+      return error.request._currentUrl;
+    }
+
+    // Redirected (local)
+    if (error.response.status == 301 || error.response.status === 302) {
+      const redirectedUrl = error.response.headers.location;
+      return redirectedUrl;
+    }
+
+    // Invalid
+    console.log(error.request);
+    console.log('Invalid');
+    return requestedUrl;
+  }
 }
 
 async function getStreamURL(animePageURL) {
