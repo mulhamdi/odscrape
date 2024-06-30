@@ -20,7 +20,7 @@ const axiosParams = {
 
 async function getHTMLSource(URL) {
   try {
-    const response = await axios.get(URL, axiosParams);
+    const response = await axios.get(URL, { ...axiosParams });
     const html = response.data;
     return html;
   } catch (error) {
