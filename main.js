@@ -4,7 +4,7 @@ import { writeFileSync } from 'fs';
 
 // Global variables
 const TARGET_URL = 'https://otakudesu.cloud';
-const JSON_PATH = './anime-list.json';
+const JSON_PATH = './site/anime-list.json';
 const animesData = [];
 const axiosParams = {
   headers: {
@@ -99,6 +99,7 @@ async function getAnimeData() {
       };
 
       animesData.push(animeInfo);
+      break;
     }
   } catch (error) {
     console.log(error.message);
