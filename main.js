@@ -99,7 +99,6 @@ async function getAnimeData() {
       };
 
       animesData.push(animeInfo);
-      break;
     }
   } catch (error) {
     console.log(error.message);
