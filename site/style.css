@@ -5,32 +5,43 @@
   font-family: sans-serif, monospace;
 }
 
+:root {
+  --main-bg-color: #0c0c0c;
+  --main-fg-color: beige;
+  --main-active-color: #00adff;
+  --scnd-bg-color: #2a2a2a;
+  --container-bg-color: #1b1b1b;
+}
+
 body {
-  background-color: #0c0c0c;
+  background-color: var(--main-bg-color);
   margin: 0;
   padding: 0;
+  min-width: 260px;
 }
 
 header {
   display: flex;
   justify-content: center;
-  background-color: #2a2a2a;
-  color: beige;
+  background-color: var(--scnd-bg-color);
+  color: var(--main-fg-color);
 }
 header h1 {
   font-size: 1.2rem;
 }
 header #logo {
   font-weight: 500;
-  color: #00adff;
+  color: var(--main-active-color);
 }
+
 footer {
   padding: 0.5rem 0;
+  /* margin-top: 2.1rem; */
   font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
-  color: beige;
-  background-color: #2a2a2a;
+  color: var(--main-fg-color);
+  background-color: var(--scnd-bg-color);
 }
 
 #anime-container {
@@ -39,8 +50,8 @@ footer {
   margin: 0 auto;
   padding: 1rem;
   gap: 1rem;
-  color: beige;
-  background-color: #1b1b1b;
+  color: var(--main-fg-color);
+  background-color: var(--container-bg-color);
 }
 
 video {
@@ -52,6 +63,7 @@ video {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #anime-card-container .anime-card {
@@ -59,13 +71,37 @@ video {
   width: 106px;
   max-width: 100%;
   height: 150px;
+  overflow: hidden;
 }
-.anime-card h2 {
-  font-size: 1rem;
-  font-weight: 500;
+.anime-card .title {
+  position: relative;
+  font-size: 0.8rem;
+  background-color: #0c0c0cbb;
+  height: 20px;
+  line-height: 1rem;
+  padding: 2px 4px;
+  overflow: hidden;
+  bottom: 34px;
+  text-align: center;
+  font-weight: normal;
+}
+.anime-card:hover {
+  .title {
+    bottom: 5rem;
+    height: 66px;
+    transition: ease-in-out 0.3s;
+  }
 }
 .anime-card .thumbnail {
   cursor: pointer;
+}
+.anime-card .episode {
+  position: absolute;
+  font-size: 0.8rem;
+  background-color: #0c0c0cbb;
+  padding: 4px 8px;
+  margin: 0;
+  border-radius: 0 0 0.5rem;
 }
 
 /* Media queries */

@@ -92,7 +92,7 @@ async function getAnimeData() {
       const animeInfo = {
         title: $mainPage(card).find('h2.jdlflm').text().trim(),
         thumbnail: $mainPage(card).find('img').attr('src'),
-        episode: $mainPage(card).find('div.epz').text().trim(),
+        episode: $mainPage(card).find('div.epz').text().substring(9),
         releaseDay: $mainPage(card).find('div.epztipe').text().trim(),
         releaseDate: $mainPage(card).find('div.newnime').text(),
         pdrainID: await getStreamURL($mainPage(card).find('a').attr('href')),

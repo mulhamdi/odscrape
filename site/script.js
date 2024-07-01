@@ -14,9 +14,9 @@ fetch('./anime-list.json')
       targetElement.insertAdjacentHTML(
         'beforeend',
         `<div class="anime-card">
+          <div class="episode">Eps ${anime.episode}</div>
           <div class="thumbnail">
             <a id="${anime.pdrainID}">
-              <span class="overlay flaticon-play-button"></span>
               <div class="cover">
                 <img
                   width="106"
@@ -25,6 +25,7 @@ fetch('./anime-list.json')
                   alt="${anime.title}"
                   referrerpolicy="no-referrer"
                   sizes="(max-width: 106px) 100vw, 106px"/>
+                  <h2 class="title">${anime.title}</h2>
               </div>
             </a>
           </div>
