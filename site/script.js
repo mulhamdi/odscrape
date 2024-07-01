@@ -5,7 +5,9 @@ function changeVideoID(id) {
   videoElement.load();
 }
 
-fetch('./anime-list.json')
+fetch('./anime-list.json', {
+  cache: 'no-cache',
+})
   .then((res) => res.json())
   .then((data) => {
     const targetElement = document.getElementById('anime-card-container');
