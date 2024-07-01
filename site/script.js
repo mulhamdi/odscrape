@@ -9,6 +9,7 @@ fetch('./anime-list.json')
   .then((res) => res.json())
   .then((data) => {
     const targetElement = document.getElementById('anime-card-container');
+    targetElement.innerHTML = '';
     data.forEach((anime) => {
       targetElement.insertAdjacentHTML(
         'beforeend',
@@ -22,6 +23,7 @@ fetch('./anime-list.json')
                   height="150"
                   src="${anime.thumbnail}"
                   alt="${anime.title}"
+                  referrerpolicy="no-referrer"
                   sizes="(max-width: 106px) 100vw, 106px"/>
               </div>
             </a>
