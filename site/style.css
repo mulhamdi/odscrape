@@ -10,6 +10,7 @@
   --main-active-color: #00adff;
   --scnd-bg-color: #2a2a2a;
   --container-bg-color: #1b1b1b;
+  --container-bg-color-alpha: #0c0c0cbb;
 }
 
 body {
@@ -76,7 +77,7 @@ video {
 .anime-card .episode {
   position: absolute;
   font-size: 0.8rem;
-  background-color: #0c0c0cbb;
+  background-color: var(--container-bg-color-alpha);
   padding: 4px 8px;
   margin: 0;
   border-radius: 0 0 0.5rem;
@@ -84,7 +85,7 @@ video {
 .anime-card .title {
   position: relative;
   font-size: 0.8rem;
-  background-color: #0c0c0cbb;
+  background-color: var(--container-bg-color-alpha);
   height: 20px;
   line-height: 1rem;
   padding: 2px 4px;
@@ -101,23 +102,26 @@ video {
   }
 }
 
-/* Media queries */
+/* Width Media Queries */
 @media only screen and (max-width: 400px) {
   #anime-card-container {
     justify-content: space-evenly;
   }
 }
+
 @media only screen and (min-width: 400px) {
   #anime-container {
     width: 100%;
   }
 }
+
 @media only screen and (min-width: 600px) {
   #anime-container {
     margin: 1rem auto;
     width: 66%;
   }
 }
+
 @media only screen and (min-width: 768px) {
   #anime-container {
     width: 70%;
@@ -126,5 +130,18 @@ video {
 @media only screen and (min-width: 992px) {
   #anime-container {
     width: 50%;
+  }
+}
+
+/* Height Media Queries */
+@media only screen and (min-height: 1000px) and (min-width: 500px) {
+  #anime-container {
+    margin: 4% auto;
+  }
+}
+
+@media only screen and (min-height: 1000px) and (min-width: 900px) {
+  #anime-container {
+    margin: 8% auto;
   }
 }
